@@ -6,5 +6,25 @@
 
 module.exports = {
   siteName: 'Gridsome',
-  plugins: []
+  plugins: [
+    {
+      use: '@gridsome/source-strapi',
+      options: {
+        apiURL: 'http://mashaoliang.cn:1337',
+        queryLimit: 1000, // Defaults to 100
+        contentTypes: ['posts'],
+        typeName: 'Strapi',
+        // Possibility to login with a Strapi user,
+        // when content types are not publicly available (optional).
+      }
+    }
+  ],
+  templates: {
+    StrapiPosts: [
+      {
+        path: '/blog/:id',
+        component: './src/templates/Blog.vue'
+      }
+    ]
+  }
 }
