@@ -17,12 +17,23 @@ module.exports = {
         // Possibility to login with a Strapi user,
         // when content types are not publicly available (optional).
       }
+    },
+    {
+      use: '@gridsome/source-graphql',
+      options: {
+        url: 'https://api.github.com/graphql',
+        fieldName: 'gitapi',
+        typeName: 'GitApi',
+        headers: {
+          Authorization: 'my authou'
+        }
+      }
     }
   ],
   templates: {
     StrapiPosts: [
       {
-        path: '/blog/:id',
+        path: '/blog/detail/:id',
         component: './src/templates/Blog.vue'
       }
     ]

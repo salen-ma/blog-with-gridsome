@@ -19,7 +19,6 @@ query ($id: ID!) {
 
 <script>
 import BlogDetail from '../components/BlogDetail'
-
 export default {
   metaInfo: {
     title: '博客详情',

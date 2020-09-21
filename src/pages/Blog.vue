@@ -63,6 +63,7 @@
         </div>
       </el-card>
     </div>
+    <Pager :info="$page.posts.pageInfo"/>
 
 		<el-card v-if="$page.posts.edges.length == 0"
 			shadow="never" 
@@ -75,8 +76,12 @@
 </template>
 
 <page-query>
-query {
-  posts: allStrapiPosts {
+query ($page: Int) {
+  posts: allStrapiPosts (perPage: 5, page: $page) @paginate{
+    pageInfo {
+      totalPages
+      currentPage
+    }
     edges {
       node {
         id
@@ -90,9 +95,14 @@ query {
 </page-query>
 
 <script>
+import { Pager } from 'gridsome'
+
 export default {
   metaInfo: {
     title: '博客列表',
+  },
+  components: {
+    Pager
   },
   data() {
     return {
@@ -106,3 +116,27 @@ export default {
   },
 };
 </script>
+
+<style>
+  nav a {
+    display: inline-block;
+    margin: 0 5px;
+    background-color: #f4f4f5;
+    color: #606266;
+    font-size: 13px;
+    min-width: 35.5px;
+    height: 28px;
+    line-height: 28px;
+    min-width: 28px;
+    border-radius: 2px;
+    text-align: center;
+    
+  }
+  nav a:hover {
+    text-decoration: none;
+  }
+  nav .active {
+    background-color: #409eff;
+    color: #fff;
+  }
+</style>
