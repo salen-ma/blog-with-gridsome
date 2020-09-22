@@ -7,13 +7,13 @@
         clearable
         style="width: 300px"
       ></el-input>
-      <el-button
+      <!-- <el-button
         @click="search"
         icon="el-icon-search"
         style="margin-left: 10px"
         circle
         plain
-      ></el-button>
+      ></el-button> -->
       <el-button
         @click="$share()"
         icon="el-icon-share"
@@ -35,11 +35,9 @@
           <el-row>
             <el-col :span="16">
               <span>
-                <a
-                  style="text-decoration:none;cursor:pointer"
-                >
+                <span>
                   <i class="el-icon-service"></i>&nbsp;&nbsp; {{ item.name }}
-                </a>
+                </span>
               </span>
             </el-col>
             <el-col :span="8">
@@ -48,14 +46,9 @@
                   style="padding: 3px 0"
                   type="text"
                   icon="el-icon-back"
-                  >前往GitHub</el-button
-                >
-                <el-button
-                  @click="$share('/user/project/details/' + item.name)"
-                  style="padding: 3px 0"
-                  type="text"
-                  icon="el-icon-share"
-                ></el-button>
+                  >
+                  <a :href="item.url" target="__blank">前往GitHub</a>
+                </el-button>
               </div>
             </el-col>
           </el-row>
@@ -126,30 +119,30 @@ query {
   gitapi {
     user (login: "salen-ma") {
       repositories(first: 30, orderBy: {field: CREATED_AT, direction: DESC}) {
-       nodes {
-         name
-         createdAt
-         updatedAt
-         description
-         id
-         projectsUrl
-         forkCount
-         languages (first: 3) {
-           nodes {
-             name
-           }
-         }
-         watchers {
-           totalCount
-         }
-         stargazers {
-           totalCount
-         }
-         licenseInfo {
-           name
-         }
-       }
-     }
+        nodes {
+          name
+          createdAt
+          updatedAt
+          description
+          id
+          url
+          forkCount
+          languages (first: 3) {
+            nodes {
+              name
+            }
+          }
+          watchers {
+            totalCount
+          }
+          stargazers {
+            totalCount
+          }
+          licenseInfo {
+            name
+          }
+        }
+      }
     }
   }
 }
@@ -167,7 +160,11 @@ export default {
   },
   computed: {
     reposList () {
-      return this.$page.gitapi.user.repositories.nodes
+      let reposList = []
+      try {
+        reposList = this.$page.gitapi.user.repositories.nodes
+      } catch {}
+      return reposList.filter(item => item.name.indexOf(this.searchKey) > -1)
     }
   },
   methods: {

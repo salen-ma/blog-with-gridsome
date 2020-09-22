@@ -9,6 +9,7 @@
   "dependencies": {
     "@gridsome/source-graphql": "^0.1.0",
     "@gridsome/source-strapi": "^0.2.0",
+    "axios": "^0.20.0",
     "element-ui": "^2.13.2",
     "gridsome": "^0.7.0",
     "markdown-it": "^11.0.1"

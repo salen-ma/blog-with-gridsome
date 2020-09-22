@@ -18,8 +18,7 @@ Plugins.install = Vue => {
     if (!message) {
       message = window.location
     } else {
-      let arr = (window.location + "").split("#")
-      message = arr[0] + "#" + message
+      message = window.location.origin + message
     }
     if (copy(message)) {
       Vue.prototype.$confirm('链接已复制,去分享给好友吧!!', '分享', {

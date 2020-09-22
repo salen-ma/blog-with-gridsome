@@ -46,7 +46,6 @@ export default {
   },
   mounted() {
     let arr = this.$route.path.split('/');
-    console.log(arr)
     this.active = '/' + arr[1]
   },  
   methods: {

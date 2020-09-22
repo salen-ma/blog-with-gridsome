@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-card shadow="never" style="margin-bottom: 20px">
+    <!-- <el-card shadow="never" style="margin-bottom: 20px">
       <el-input
         placeholder="请输入关键字"
         v-model="searchKey"
@@ -22,7 +22,7 @@
         plain
         circle
       ></el-button>
-    </el-card>
+    </el-card> -->
 
     <div v-if="$page.posts.edges.length > 0">
       <el-card
@@ -35,7 +35,7 @@
           <el-row>
             <el-col :span="16">
               <span>
-                <g-link :to="`/blog/${post.node.id}`"
+                <g-link :to="`/blog/detail/${post.node.id}`"
 									style="text-decoration:none;cursor:pointer">
                   {{post.node.title}}
                 </g-link>
@@ -44,7 +44,7 @@
             <el-col :span="8">
               <div style="text-align: right;">
                 <el-button
-                  @click="$share(`/blog/${post.node.id}`)"
+                  @click="$share(`/blog/detail/${post.node.id}`)"
                   style="padding: 3px 0"
                   type="text"
                   icon="el-icon-share"

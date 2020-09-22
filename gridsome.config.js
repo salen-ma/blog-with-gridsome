@@ -10,7 +10,7 @@ module.exports = {
     {
       use: '@gridsome/source-strapi',
       options: {
-        apiURL: 'http://mashaoliang.cn:1337',
+        apiURL: process.env.STRAPI_URL,
         queryLimit: 1000, // Defaults to 100
         contentTypes: ['posts'],
         typeName: 'Strapi',
@@ -25,7 +25,7 @@ module.exports = {
         fieldName: 'gitapi',
         typeName: 'GitApi',
         headers: {
-          Authorization: 'my authou'
+          Authorization: `Bearer ${process.env.GIT_Authorization}`,
         }
       }
     }
