@@ -54,7 +54,7 @@
           </el-row>
         </div>
         <div style="font-size: 0.9rem;line-height: 1.5;color: #606c71;">
-          最近更新 {{post.node.updated_at}}
+          最近更新 {{post.node.updated_at | date}}
         </div>
         <div
           style="font-size: 1.1rem;line-height: 1.5;color: #303133;padding: 10px 0px 0px 0px"

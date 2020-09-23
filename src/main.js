@@ -4,8 +4,10 @@
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import Plugins from './common/plugins'
+import Filters from './common/filters'
 
 export default function (Vue, { router, head, isClient }) {
   Vue.use(ElementUI)
   Vue.use(Plugins)
+  Vue.use(Filters)
 }

@@ -27,8 +27,8 @@
       </el-row>
     </div>
     <div style="font-size: 0.9rem;line-height: 1.5;color: #606c71;">
-      发布 {{ blog.created_at }} <br />
-      更新 {{ blog.updated_at }}
+      发布 {{ blog.created_at | date }} <br />
+      更新 {{ blog.updated_at | date }}
     </div>
     <div
       style="font-size: 1.1rem;line-height: 1.5;color: #303133;border-bottom: 1px solid #E4E7ED;padding: 5px 0px 5px 0px"
